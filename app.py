@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, send_from_directory
 from flask_cors import CORS
 import requests
 import os
@@ -245,7 +245,7 @@ LOCATIONS = {
 
 @app.route('/')
 def home():
-    return render_template('index.html', default_location=DEFAULT_LOCATION)
+    return send_from_directory('.', 'index.html')
 
 @app.route('/api/weather/<location>')
 def get_weather(location):
